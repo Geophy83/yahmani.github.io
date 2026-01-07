@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YahMani Tech | Security & Networking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&display=swap');
+        :root {
+            --midnight: #050B14;
+            --cyber-cyan: #00D9FF;
+            --viking-blue: #162239;
+        }
+        * { font-family: 'Exo 2', sans-serif; box-sizing: border-box; }
+        body { background-color: var(--midnight); color: #B8C5D6; margin: 0; scroll-behavior: smooth; }
+
+        .hero-mesh {
+            background: radial-gradient(circle at 50% 50%, var(--viking-blue) 0%, var(--midnight) 100%);
+            position: relative;
+        }
+
+        .grid-overlay {
+            position: absolute; inset: 0;
+            background-image: linear-gradient(var(--cyber-cyan) 1px, transparent 1px), 
+                              linear-gradient(90deg, var(--cyber-cyan) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse at center, black, transparent 85%);
+            opacity: 0.1; pointer-events: none;
+        }
+
+        .glass-card, .service-card {
+            background: rgba(22, 34, 57, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 217, 255, 0.1);
+            transition: all 0.4s ease;
+        }
+        .glass-card:hover, .service-card:hover {
+            border-color: var(--cyber-cyan);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.2);
+        }
+
+        .glow-text { text-shadow: 0 0 20px rgba(0, 217, 255, 0.5); }
+        
+        .gallery-img {
+            width: 100%; height: 250px;
+            object-fit: cover;
+            border-radius: 12px;
+            filter: grayscale(30%) brightness(0.8);
+            transition: 0.5s;
+        }
+        .gallery-img:hover { filter: grayscale(0%) brightness(1); transform: scale(1.03); }
+
+        .whatsapp-float {
+            position: fixed; bottom: 30px; right: 30px; z-index: 100;
+        }
+
+        .btn-cyan {
+            background: linear-gradient(135deg, #00D9FF, #33E0FF);
+            color: #050B14;
+            transition: all 0.3s;
+        }
+
+        #contact-modal {
+            display: none;
+            background: rgba(5, 11, 20, 0.95);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="h-full">
+
+    <nav class="fixed w-full z-[150] bg-[#050B14]/90 backdrop-blur-lg border-b border-white/5 px-6 py-5">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-[#00D9FF] font-black text-2xl tracking-tighter uppercase italic">
+                YahMani <span class="text-white">Tech</span>
+            </div>
+            <div class="hidden md:flex gap-10 font-bold text-xs uppercase tracking-[0.2em] text-gray-400">
+                <a href="#" class="hover:text-[#00D9FF] transition">Home</a>
+                <a href="#about" class="hover:text-[#00D9FF] transition">About Us</a>
+                <a href="#catalogue" class="hover:text-[#00D9FF] transition">Catalogue</a>
+                <a href="#packages" class="hover:text-[#00D9FF] transition">Packages</a>
+            </div>
+            <button onclick="toggleModal()" class="bg-[#00D9FF] text-[#050B14] px-6 py-2 rounded-full font-black text-[10px] uppercase tracking-widest hover:bg-white transition-all">
+                Hire Us
+            </button>
+        </div>
+    </nav>
+
+    <header class="hero-mesh min-h-screen flex items-center justify-center px-6 pt-24">
+        <div class="grid-overlay"></div>
+        <div class="max-w-6xl w-full text-center relative z-10">
+            <div class="mb-8 flex justify-center">
+                <div class="p-6 rounded-3xl border-2 border-[#00D9FF]/30 bg-[#00D9FF]/5">
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#00D9FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="drop-shadow-[0_0_15px_#00D9FF]"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+                </div>
+            </div>
+            <h1 class="glow-text text-4xl md:text-7xl font-extrabold text-[#00D9FF] mb-10 leading-tight tracking-widest uppercase italic">
+                Yamani Home and Office Tech Solution
+            </h1>
+            <p class="text-xl md:text-3xl font-bold text-white mb-10 tracking-[0.3em] uppercase opacity-80">
+                Digital Precision with Strength
+            </p>
+            <div class="flex flex-col sm:flex-row gap-5 justify-center">
+                <a href="#packages" class="btn-cyan font-black py-4 px-10 rounded-xl uppercase tracking-widest hover:scale-105 transition shadow-[0_0_20px_rgba(0,217,255,0.3)]">
+                    Explore Solutions
+                </a>
+                <button onclick="toggleModal()" class="border-2 border-white/20 text-white font-black py-4 px-10 rounded-xl uppercase tracking-widest hover:bg-white hover:text-[#050B14] transition">
+                    Contact Us
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="py-40 px-6 bg-[#050B14]">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+            <div>
+                <span class="text-[#00D9FF] font-bold tracking-[0.4em] uppercase text-sm mb-4 block">The Yahmani Advantage</span>
+                <h2 class="text-5xl md:text-7xl font-black text-white mb-8 uppercase italic leading-none">About Us</h2>
+                <p class="text-gray-400 text-xl leading-relaxed mb-8">
+                    Based in <span class="text-white font-bold">Ashongman Estate, Accra</span>, we bridge the gap between high-end 4K surveillance and enterprise-grade networking. We don't just "install cameras"—we engineer secure, lag-free digital fortresses.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="p-6 glass-card rounded-2xl">
+                        <h3 class="text-[#00D9FF] text-xl font-bold mb-2">📡 Expert Networking</h3>
+                        <p class="text-sm">Design robust fiber backbones and Wi-Fi 6 mesh systems that never drop.</p>
+                    </div>
+                    <div class="p-6 glass-card rounded-2xl">
+                        <h3 class="text-[#00D9FF] text-xl font-bold mb-2">⚔️ Tactical Security</h3>
+                        <p class="text-sm">AI-powered 4K surveillance integrated into high-speed networks for zero-lag monitoring.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <img src="images/deck.jpg" class="gallery-img mb-4" alt="Deck">
+                <img src="images/netest.jpg" class="gallery-img mb-4" alt="Netest">
+            </div>
+        </div>
+    </section>
+
+    <section id="catalogue" class="py-40 px-6 bg-[#0A1628]">
+        <div class="max-w-7xl mx-auto mb-20 text-center">
+            <h2 class="text-4xl md:text-6xl font-black text-white mb-4 uppercase italic">Installation Catalogue</h2>
+            <p class="text-gray-400 uppercase tracking-widest text-sm font-bold">Hardware & Implementation Gallery</p>
+        </div>
+        
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="glass-card p-4 rounded-3xl">
+                <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=800" class="gallery-img mb-6" alt="Networking">
+                <div class="px-2 pb-4">
+                    <h3 class="text-[#00D9FF] font-black text-xl uppercase italic">Network Backbones</h3>
+                    <p class="text-gray-500 text-sm">Structured cabling and fiber optic termination for high-performance offices.</p>
+                </div>
+            </div>
+
+            <div class="glass-card p-4 rounded-3xl">
+                <img src="images/mobile.jpg" class="gallery-img mb-4" alt="Mobile">
+                <div class="px-2 pb-4">
+                    <h3 class="text-[#00D9FF] font-black text-xl uppercase italic">The Mobile Command Center</h3>
+                    <p class="text-gray-500 text-sm">Your home in your pocket. 24/7 remote access anywhere in the world.</p>
+                </div>
+            </div>
+
+            <div class="glass-card p-4 rounded-3xl">
+                <img src="images/rack.jpg" class="gallery-img mb-4" alt="Rack">
+                <div class="px-2 pb-4">
+                    <h3 class="text-[#00D9FF] font-black text-xl uppercase italic">Server Rack Setup</h3>
+                    <p class="text-gray-400 text-sm">Professional data management hubs.</p>
+                </div>
+            </div>
+
+            <div class="glass-card p-4 rounded-3xl">
+                <img src="images/survey.jpg" class="gallery-img mb-4" alt="Survey">
+                <div class="px-2 pb-4">
+                    <h3 class="text-[#00D9FF] font-black text-xl uppercase italic">Site Survey</h3>
+                    <p class="text-gray-400 text-sm">Mapping signal strength and 4K camera blind spots.</p>
+                </div>
+            </div>
+
+            <div class="glass-card p-4 rounded-3xl">
+                <img src="images/networktesting.jpg" class="gallery-img mb-4" alt="Network Testing">
+                <div class="px-2 pb-4">
+                    <h3 class="text-[#00D9FF] font-black text-xl uppercase italic">Final Configuration</h3>
+                    <p class="text-gray-400 text-sm">A laptop connected to the network for testing</p>
+                </div>
+            </div>
+
+            <div class="glass-card p-4 rounded-3xl">
+                <img src="images/cctv.jpg" class="gallery-img mb-4" alt="CCTV">
+                <div class="px-2 pb-4">
+                    <h3 class="text-[#00D9FF] font-black text-xl uppercase italic">AI Security Camera</h3>
+                    <p class="text-gray-400 text-sm">Precision perimeter protection.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 px-6 bg-[#050B14]">
+        <div class="max-w-7xl mx-auto text-center mb-16">
+            <h2 class="text-4xl font-black text-white uppercase italic">The Yahmani Workflow</h2>
+            <div class="h-1 w-20 bg-[#00D9FF] mx-auto mt-4"></div>
+        </div>
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="text-center">
+                <div class="bg-[#162239] p-8 rounded-2xl mb-4 border border-[#00D9FF]/10">
+                    <span class="text-3xl">🔍</span>
+                    <h4 class="text-[#00D9FF] font-bold uppercase text-xs mt-4">01. Site Survey</h4>
+                </div>
+            </div>
+            <div class="text-center">
+                <div class="bg-[#162239] p-8 rounded-2xl mb-4 border border-[#00D9FF]/10">
+                    <span class="text-3xl">🏗️</span>
+                    <h4 class="text-[#00D9FF] font-bold uppercase text-xs mt-4">02. Infrastructure</h4>
+                </div>
+            </div>
+            <div class="text-center">
+                <div class="bg-[#162239] p-8 rounded-2xl mb-4 border border-[#00D9FF]/10">
+                    <span class="text-3xl">🛠️</span>
+                    <h4 class="text-[#00D9FF] font-bold uppercase text-xs mt-4">03. Deployment</h4>
+                </div>
+            </div>
+            <div class="text-center">
+                <div class="bg-[#162239] p-8 rounded-2xl mb-4 border border-[#00D9FF]/10">
+                    <span class="text-3xl">📱</span>
+                    <h4 class="text-[#00D9FF] font-bold uppercase text-xs mt-4">04. Integration</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="packages" class="py-40 px-6 bg-[#0A1628]">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-6xl font-black text-[#00D9FF] mb-4 uppercase">Service Packages</h2>
+                <p class="text-gray-400">Tailored solutions for maximum uptime and security.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="service-card p-12 rounded-3xl border-t-4 border-t-[#CD7F32] flex flex-col">
+                    <h3 class="text-3xl font-bold text-[#CD7F32] mb-2 tracking-tighter uppercase">Bronze</h3>
+                    <p class="text-[#CD7F32] font-bold uppercase text-xs mb-8">Essential Protection</p>
+                    <ul class="space-y-5 text-gray-300 mb-12 flex-grow">
+                        <li class="flex items-center gap-3"><span>🔹</span> 4 Full HD IP Cameras</li>
+                        <li class="flex items-center gap-3"><span>🔹</span> Basic NVR (1TB Storage)</li>
+                        <li class="flex items-center gap-3"><span>🔹</span> Home Wi-Fi Optimization</li>
+                    </ul>
+                    <a href="https://forms.gle/zWbn7bWo3r1brpUT8" target="_blank" class="block w-full text-center py-4 border-2 border-[#00D9FF] text-[#00D9FF] font-bold rounded-xl hover:bg-[#00D9FF] hover:text-[#050B14] transition-all uppercase">Get Quote</a>
+                </div>
+
+                <div class="service-card p-12 rounded-3xl border-t-4 border-t-[#00D9FF] relative scale-105 shadow-2xl bg-[#162239] flex flex-col">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-[#00D9FF] text-[#050B14] px-6 py-1 rounded-full font-black text-[10px] uppercase tracking-widest">Most Requested</div>
+                    <h3 class="text-3xl font-bold text-white mb-2 tracking-tighter uppercase">Silver</h3>
+                    <p class="text-white font-bold uppercase text-xs mb-8">Professional Hub</p>
+                    <ul class="space-y-5 text-gray-200 mb-12 flex-grow">
+                        <li class="flex items-center gap-3"><span>🔹</span> 8-12 4K Ultra-HD Cameras</li>
+                        <li class="flex items-center gap-3"><span>🔹</span> 4TB Storage + Smart AI</li>
+                        <li class="flex items-center gap-3"><span>🔹</span> Full Structured Cabling</li>
+                    </ul>
+                    <a href="https://forms.gle/3cfEtMfnwWEjWZcs6" target="_blank" class="block w-full text-center py-4 bg-[#00D9FF] text-[#050B14] font-black rounded-xl hover:shadow-[0_0_30px_rgba(0,217,255,0.5)] transition-all uppercase">Get Quote</a>
+                </div>
+
+                <div class="service-card p-12 rounded-3xl border-t-4 border-t-[#FFD700] flex flex-col">
+                    <h3 class="text-3xl font-bold text-[#FFD700] mb-2 tracking-tighter uppercase">Gold</h3>
+                    <p class="text-[#FFD700] font-bold uppercase text-xs mb-8">The Fortress</p>
+                    <ul class="space-y-5 text-gray-300 mb-12 flex-grow">
+                        <li class="flex items-center gap-3"><span>🔹</span> Unlimited AI Surveillance</li>
+                        <li class="flex items-center gap-3"><span>🔹</span> Fiber Optic Network</li>
+                        <li class="flex items-center gap-3"><span>🔹</span> 24/7 Dedicated Support</li>
+                    </ul>
+                    <a href="https://forms.gle/3cfEtMfnwWEjWZcs6" target="_blank" class="block w-full text-center py-4 border-2 border-[#00D9FF] text-[#00D9FF] font-bold rounded-xl hover:bg-[#00D9FF] hover:text-[#050B14] transition-all uppercase">Get Quote</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-40 px-6 bg-[#050B14] border-t border-white/5">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="h-[500px] w-full rounded-3xl overflow-hidden border-2 border-white/10 shadow-2xl">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15881.026703597883!2d-0.21148485!3d5.6766089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf9ca7e8c3b777%3A0xc487d55b0a3f87c4!2sAshongman%20Estate!5e0!3m2!1sen!2sgh!4v1700000000000" 
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <div>
+                <h2 class="text-5xl font-black text-white mb-6 uppercase italic">Our Hub</h2>
+                <p class="text-gray-400 text-lg mb-8">Strategically located in Ashongman Estate to provide rapid response and technical excellence across Accra.</p>
+                <div class="space-y-4">
+                    <p class="flex items-center gap-4 text-white">📍 Ashongman Estate, Accra, Ghana</p>
+                    <p class="flex items-center gap-4 text-white">📞 +233 54 502 8880</p>
+                    <p class="flex items-center gap-4 text-white">📞 +233 24 969 5864</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="contact-modal" class="fixed inset-0 z-[200] items-center justify-center p-6">
+        <div class="bg-[#162239] border-2 border-[#00D9FF] p-10 rounded-3xl max-w-md w-full relative">
+            <button onclick="toggleModal()" class="absolute top-4 right-6 text-gray-500 text-3xl">×</button>
+            <h3 class="text-white text-3xl font-black mb-6 text-center">WHATSAPP US</h3>
+            <div class="space-y-4">
+                <a href="https://wa.me/233545028880" class="flex items-center justify-between bg-[#25D366] p-5 rounded-2xl text-white font-bold hover:scale-105 transition shadow-lg">
+                    <span>Network Support</span>
+                    <span class="bg-black/20 px-3 py-1 rounded text-xs">+233 54 502 8880</span>
+                </a>
+                <a href="https://wa.me/233249695864" class="flex items-center justify-between bg-[#25D366] p-5 rounded-2xl text-white font-bold hover:scale-105 transition shadow-lg">
+                    <span>Security Support</span>
+                    <span class="bg-black/20 px-3 py-1 rounded text-xs">+233 24 969 5864</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="py-20 px-6 border-t border-gray-800 bg-[#050B14] text-center">
+        <h4 class="text-2xl font-bold text-[#00D9FF] mb-4 uppercase italic">YahMani Tech Solution</h4>
+        <p class="text-gray-600 text-xs uppercase tracking-widest">© 2026 YahMani Tech, Accra, Ghana. All Rights Reserved.</p>
+    </footer>
+
+    <button onclick="toggleModal()" class="whatsapp-float bg-[#25D366] p-5 rounded-full shadow-2xl hover:scale-110 transition">
+        <svg width="25" height="25" fill="white" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.522-2.961-2.639-.087-.117-.708-.941-.708-1.794s.446-1.27.607-1.446c.162-.176.351-.221.469-.221s.235 0 .338.005c.113.005.266-.045.415.316.154.37.528 1.287.573 1.379.045.09.075.194.015.316-.06.122-.09.198-.181.307-.09.11-.19.245-.271.33-.09.09-.184.188-.079.37.105.181.468.772.999 1.246.684.611 1.261.801 1.441.891.181.09.286.075.391-.045.105-.121.451-.527.572-.707.121-.181.241-.151.406-.091.166.061 1.054.497 1.235.587.181.091.301.136.346.212.045.075.045.437-.099.841z"/></svg>
+    </button>
+
+    <script>
+        function toggleModal() {
+            const modal = document.getElementById('contact-modal');
+            modal.style.display = (modal.style.display === 'flex') ? 'none' : 'flex';
+        }
+    </script>
+</body>
+</html>
